@@ -1,17 +1,37 @@
 <script setup>
-
+const paises = [
+    { codigo: 'US', nombre: 'Estados Unidos' },
+    { codigo: 'MX', nombre: 'México' },
+    { codigo: 'AR', nombre: 'Argentina' },
+    { codigo: 'CO', nombre: 'Colombia' },
+    { codigo: 'CR', nombre: 'Costa Rica' },
+    { codigo: 'ES', nombre: 'España' },
+    { codigo: 'PE', nombre: 'Perú' }
+]
 </script>
 <template>
-    <form class="formulario">
-        <div class="campo">
-            <label for="ciudad">Ingresa la ciudad</label>
-            <input type="text" id="ciudad" placeholder="Ciudad">
+    <form class="flex flex-col gap-4">
+        <div class="flex flex-col gap-2">
+            <label for="ciudad" class="text-4xl font-bold text-white pb-2">Ingresa la ciudad</label>
+            <input type="text" id="ciudad" placeholder="Ciudad"
+                class="p-4 bg-transparent border-4 border-white rounded-xl text-white font-normal text-[1.8rem]">
         </div>
-        <div class="campo">
-            <label for="pais">Selecciona el pais</label>
-            <select name="" id="pais">
+        <div class="flex flex-col gap-2 relative">
+            <label for="pais" class="text-4xl font-bold text-white pb-2">Selecciona el pais</label>
+            <select name="" id="pais"
+                class="p-4 bg-transparent border-4 border-white rounded-xl text-white font-normal text-[1.8rem] appearance-none">
                 <option value="" disabled selected>-- Seleccionar --</option>
+                <option v-for="pais in paises" :value="pais.codigo">{{ pais.nombre }}</option>
             </select>
+            <div class="pointer-events-none absolute inset-y-0 right-0 translate-y-7 flex items-center pr-5 text-white">
+                <svg class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                        clip-rule="evenodd" />
+                </svg>
+            </div>
         </div>
+
+
     </form>
 </template>

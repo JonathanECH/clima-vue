@@ -1,3 +1,4 @@
+@import "tailwindcss" ;
 :root {
   --blanco: #fff;
   --primary: #f59e0b;
@@ -10,14 +11,16 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   height: 100vh;
-  font-family: 'Outfit', sans-serif;
+  font-family: "Poppins", sans-serif;
+
   color: var(--blanco);
   font-size: 2rem;
   overflow: hidden;
 }
 .titulo {
   text-align: center;
-  font-size: 3rem;
+  font-size: 3rem;  
+  font-weight: 800;
   margin-top:5rem;
 }
 
