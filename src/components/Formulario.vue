@@ -1,4 +1,13 @@
 <script setup>
+import { reactive, ref } from 'vue';
+import Alerta from './Alerta.vue';
+
+const busqueda = reactive({
+    ciudad: '',
+    pais: ''
+});
+
+const error = ref('');
 const paises = [
     { codigo: 'US', nombre: 'Estados Unidos' },
     { codigo: 'MX', nombre: 'México' },
@@ -7,21 +16,33 @@ const paises = [
     { codigo: 'CR', nombre: 'Costa Rica' },
     { codigo: 'ES', nombre: 'España' },
     { codigo: 'PE', nombre: 'Perú' }
-]
+];
+
+const consultarClima = () => {
+    if (Object.values(busqueda).includes('')) {
+        error.value = 'Todos los campos son obligatorios.';
+        return
+    }
+    error.value = '';
+}
 </script>
 <template>
-    <form class="flex flex-col gap-4">
+    <form class="flex flex-col gap-4" @submit.prevent="consultarClima">
+        <Alerta v-if="error">{{ error }}</Alerta>
         <div class="flex flex-col gap-2">
             <label for="ciudad" class="text-4xl font-bold text-white pb-2">Ingresa la ciudad</label>
             <input type="text" id="ciudad" placeholder="Ciudad"
-                class="p-4 bg-transparent border-4 border-white rounded-xl text-white font-normal text-[1.8rem]">
+                class="p-4 bg-transparent border-4 border-white rounded-xl text-white font-normal text-[1.8rem] placeholder:text-white"
+                v-model="busqueda.ciudad">
         </div>
         <div class="flex flex-col gap-2 relative">
             <label for="pais" class="text-4xl font-bold text-white pb-2">Selecciona el pais</label>
             <select name="" id="pais"
-                class="p-4 bg-transparent border-4 border-white rounded-xl text-white font-normal text-[1.8rem] appearance-none">
-                <option value="" disabled selected>-- Seleccionar --</option>
-                <option v-for="pais in paises" :value="pais.codigo">{{ pais.nombre }}</option>
+                class="p-4 bg-transparent border-4 border-white rounded-xl text-white font-normal text-[1.8rem] appearance-none cursor-pointer"
+                v-model="busqueda.pais">
+                <option value="" disabled selected class="text-black bg-white">-- Seleccionar --</option>
+                <option v-for="pais in paises" :value="pais.codigo" class="text-black bg-white">{{ pais.nombre }}
+                </option>
             </select>
             <div class="pointer-events-none absolute inset-y-0 right-0 translate-y-7 flex items-center pr-5 text-white">
                 <svg class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
@@ -32,6 +53,7 @@ const paises = [
             </div>
         </div>
 
-
+        <input type="submit" value="consultar clima"
+            class="bg-[#f59e0b] text-[1.6rem] uppercase font-bold p-4 mt-4 cursor-pointer">
     </form>
 </template>

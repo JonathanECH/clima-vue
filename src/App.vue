@@ -4,7 +4,7 @@ import Formulario from './components/Formulario.vue';
 
 <template>
   <h1 class="titulo">Buscador de Clima</h1>
-  <div class="contenedor">
+  <div class="contenedor buscador-clima">
     <Formulario />
   </div>
 </template>
