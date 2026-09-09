@@ -1,7 +1,6 @@
 <script setup>
 import useClima from '../composables/useClima';
-
-const { formatearTemp } = useClima();
+const { formatearTemp} = useClima();
 defineProps({
     clima: {
         type: Object,

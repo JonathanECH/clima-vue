@@ -17,18 +17,7 @@ body {
   font-size: 2rem;
   overflow: hidden;
 }
-.titulo {
-  text-align: center;
-  font-size: 3rem;  
-  font-weight: 800;
-  margin-top:5rem;
-}
 
-.contenedor {
-  max-width: 100rem;
-  width: 95%;
-  margin: 0 auto;
-}
 @media (min-width: 768px) {
   .buscador-clima {
       display: grid;
@@ -74,15 +63,6 @@ body {
   opacity: 1; 
 }
 
-.temperaturas {
-
-}
-.temperaturas p {
-  font-weight: 900;
-}
-.temperaturas span {
-  font-weight: 400;
-}
 
 .instrucciones,
 .no-resultados {
