@@ -1,4 +1,4 @@
-import { ref, reactive } from "vue";
+import { ref, reactive, computed } from "vue";
 import axios from 'axios';
 export default function useClima() {
 
@@ -19,6 +19,7 @@ export default function useClima() {
             const { data: resultado } = await axios(urlClima);
 
             clima.value = resultado;
+            console.log(resultado)
         } catch (error) {
             console.log(error)
         }
@@ -27,8 +28,16 @@ export default function useClima() {
 
     }
 
+    const mostrarClima = computed(() => {
+        return Object.values(clima.value).length > 0;
+    })
+
+    const formatearTemp = temp => parseInt(temp - 273.15)
+
     return {
         obtenerClima,
-        clima
+        clima,
+        mostrarClima,
+        formatearTemp
     }
 }

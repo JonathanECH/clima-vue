@@ -11,6 +11,7 @@ const busqueda = reactive({
 const error = ref('');
 const paises = [
     { codigo: 'US', nombre: 'Estados Unidos' },
+    { codigo: 'VE', nombre: 'Venezuela' },
     { codigo: 'MX', nombre: 'México' },
     { codigo: 'AR', nombre: 'Argentina' },
     { codigo: 'CO', nombre: 'Colombia' },
