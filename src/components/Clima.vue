@@ -9,7 +9,7 @@ defineProps({
 })
 </script>
 <template>
-    <div class="bg-white p-4 text-[#2b353b] text-center mt-8  rounded-2xl">
+    <div class="bg-white p-4 text-[#2b353b] text-center mt-20 ms:mt-8 rounded-2xl">
         <h2 class=" text-5xl font-black mt-8">Clima de: {{ clima.name }}</h2>
         <p class="text-[6rem] m-2 font-black">{{ formatearTemp(clima.main.temp) }} <span>&deg;C</span></p>
         <div class="flex gap-8 justify-center mb-8">

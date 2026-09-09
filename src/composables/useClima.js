@@ -1,34 +1,36 @@
-import { ref, reactive, computed } from "vue";
+import { ref, computed } from "vue";
 import axios from 'axios';
 export default function useClima() {
 
     const clima = ref({});
     const cargando = ref(false);
+    const error = ref('');
 
     const obtenerClima = async ({ ciudad, pais }) => {
         cargando.value = true;
+        clima.value = {};
         //importamos la api
         const key = import.meta.env.VITE_API_KEY;
 
         //importamos lat y log
         try {
-            const url = `http://api.openweathermap.org/geo/1.0/direct?q=${ciudad},${pais}&limit=1&appid=${key}`
+            const url = `http://api.openweathermap.org/geo/1.0/direct?q=${ciudad},${pais}&limit=1&appid=${key}`;
             const { data } = await axios(url);
 
             const { lat, lon } = data[0];
 
-            const urlClima = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`
+            const urlClima = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}`;
             const { data: resultado } = await axios(urlClima);
 
             clima.value = resultado;
-        } catch (error) {
-            console.log(error)
+        } catch {
+            error.value = 'Ciudad no encontrada.';
+            setTimeout(() => {
+                error.value = '';
+            }, 4000);
         }finally{
             cargando.value = false;
         }
-
-        //obtener el clima
-
     }
 
     const mostrarClima = computed(() => {
@@ -42,6 +44,7 @@ export default function useClima() {
         clima,
         mostrarClima,
         formatearTemp,
-        cargando
+        cargando,
+        error
     }
 }

@@ -12,7 +12,6 @@ body {
   background-size: cover;
   height: 100vh;
   font-family: "Poppins", sans-serif;
-
   color: var(--blanco);
   font-size: 2rem;
   overflow: hidden;
@@ -26,47 +25,4 @@ body {
       gap: 4rem;
       margin-top: 5rem;
   }
-}
-.formulario,
-.campo {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-.formulario label {
-  font-size: 2rem;
-  font-weight: 700;
-}
-.formulario input[type="text"], 
-.formulario select {
-  padding: 1rem;
-  background-color: transparent;
-  border: .3rem solid var(--blanco);
-  border-radius: 1rem;
-  color: var(--blanco);
-  font-weight: 400;
-  font-size: 1.8rem;
-}
-.formulario input[type="submit"] {
-  background-color: var(--primary);
-  border: none;
-  color: var(--blanco);
-  font-weight: 700;
-  font-size: 1.4rem;
-  text-transform: uppercase;
-  cursor: pointer;
-  padding: 1rem;
-  margin-top: 2rem;
-}
-.campo ::placeholder { 
-  color: var(--blanco);
-  opacity: 1; 
-}
-
-
-.instrucciones,
-.no-resultados {
-  text-align: center;
-  color: var(--blanco);
-  font-size: 2rem;
 }
