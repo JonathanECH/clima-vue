@@ -74,24 +74,8 @@ body {
   opacity: 1; 
 }
 
-.resultado {
-  background-color: var(--blanco);
-  padding: 1rem;
-  border-radius: 1rem;
-  color: #2b353b;
-  text-align: center;
-  margin-top: 2rem;
-}
-
-.resultado .actual {
-  font-size: 6rem;
-  margin: 0;
-  font-weight: 900;
-}
 .temperaturas {
-  display: flex;
-  gap: 2rem;
-  justify-content: center;
+
 }
 .temperaturas p {
   font-weight: 900;
